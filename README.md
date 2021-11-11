@@ -36,8 +36,11 @@ THEN the saved events persist
 * HTML
 * CSS
 * JavaScript
-* ??Bootstrap??
-* ??Jquery??
+* Bootstrap
+* Jquery
+* Moment.js
+* FontAwesome
+* googleapis
 
 ## Website
 https://gitandrewcoffee.github.io/work_day_scheduler-/
