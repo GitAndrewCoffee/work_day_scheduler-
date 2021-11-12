@@ -41,9 +41,12 @@ function loadNotes () {
     console.log("loadNotes running");
     var loadedNotes = localStorage.getItem('calendarNotes');
     console.log(loadedNotes);
-    calendarNotes = [];
-    calendarNotes = loadedNotes.split(",");
-    console.log(calendarNotes);
+    
+    if (loadedNotes) {
+        calendarNotes = [];
+        calendarNotes = loadedNotes.split(",");
+        console.log(calendarNotes);
+    };
 
 }; //loadNotes
 
