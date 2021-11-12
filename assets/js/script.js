@@ -7,7 +7,7 @@
 var currentD = moment().format("dddd, MMMM Do YYYY");
 var currentH = moment().format("k");
 var workHours = ["9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM"]
-var calendarNotes = ["", "", "", "", "", "", "", "", ""];
+var calendarNotes = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
 
 //Jumbotron Elements
 var currentDayEl = $("#currentDay");
@@ -39,6 +39,11 @@ function onStart() {
 
 function loadNotes () {
     console.log("loadNotes running");
+    var loadedNotes = localStorage.getItem('calendarNotes');
+    console.log(loadedNotes);
+    calendarNotes = [];
+    calendarNotes = loadedNotes.split(",");
+    console.log(calendarNotes);
 
 }; //loadNotes
 
@@ -52,11 +57,20 @@ function buildDay () {
         console.log(workHours[i]);
         iHour = i + 9;
 
+        function gotClicked() {
+
+            var saveMe = $("#txt"+ i).val();   
+            calendarNotes[i] = saveMe;
+            console.log("calendarNotes[i] updated to: " + calendarNotes[i]);
+            saveNotes();
+
+        };
+
+
         //Check current hour for time passed formatting
         var useClass = getTimeClass(iHour);
 
         console.log("useClass is " + useClass);
-
 
         //Build out Row
         var buildRow = $('<div>');
@@ -72,6 +86,7 @@ function buildDay () {
         //Build out text area
         var textCol = $('<textarea>');
         textCol.attr("class", "col-8 " + useClass);
+        textCol.attr("id", "txt" + i);
         textCol.text(calendarNotes[i]);
         buildRow.append(textCol);
         
@@ -79,9 +94,15 @@ function buildDay () {
         var buttonCol = $('<button>');
         buttonCol.attr("class","col-2 saveBtn fa fa-save");
         buttonCol.attr("id", "btn" + i);
+        buttonCol.on( "click", function() {
+   
+            gotClicked();
+            
+          });
         buildRow.append(buttonCol);
-
+        console.log(calendarNotes);
     }
+
 
 }; //buildDay
 
@@ -109,8 +130,20 @@ function getTimeClass(evaluateMe) {
 }; //getTimeClass
 
 
+function saveNotes(){
+
+    console.log("saveNotes is running");
+    console.log(calendarNotes);
+    localStorage.setItem('calendarNotes', calendarNotes);
+    loadNotes();
+
+}; //saveNotes
+
+
 //
 //Start the App
 //
 
 onStart();
+
+
