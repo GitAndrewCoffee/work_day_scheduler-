@@ -40,9 +40,8 @@ function onStart() {
 function loadNotes () {
     console.log("loadNotes running");
     var loadedNotes = localStorage.getItem('calendarNotes');
-    console.log(loadedNotes);
-    
-    if (loadedNotes) {
+     
+    if (loadedNotes !== null) {
         calendarNotes = [];
         calendarNotes = loadedNotes.split(",");
         console.log(calendarNotes);
