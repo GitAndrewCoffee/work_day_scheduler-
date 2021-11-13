@@ -1,4 +1,4 @@
-# Time Quiz
+# Work Day Scheduler
 
 ## Purpose
 Module 5, Challenge 5 for University of Minnesota Coding Booking, Fall 2021  

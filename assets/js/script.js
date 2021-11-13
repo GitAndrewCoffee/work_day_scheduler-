@@ -57,7 +57,7 @@ function buildDay () {
         
         console.log(i);
         console.log(workHours[i]);
-        iHour = i + 9;
+        iHour = i + 15;
 
         function gotClicked() {
 
@@ -119,7 +119,7 @@ function getTimeClass(evaluateMe) {
 
         return "past";
 
-    } else if (evaluateMe === currentH) {
+    } else if (evaluateMe == currentH) {
 
         return "present";
 
