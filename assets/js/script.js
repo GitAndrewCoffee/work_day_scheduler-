@@ -57,7 +57,7 @@ function buildDay () {
         
         console.log(i);
         console.log(workHours[i]);
-        iHour = i + 15;
+        iHour = i + 9;
 
         function gotClicked() {
 
